@@ -1,0 +1,19 @@
+{
+  "name": "olgamawypieki.pl",
+  "version": "0.0.0",
+  "description": "Olga ma wypieki website",
+  "main": "dist/index.html",
+  "repository": "git@github.com:erykpiast/olgamawypieki.pl.git",
+  "author": "eryk.piast@gmail.com",
+  "license": "MIT",
+  "config": {
+    "s3bucket": "olgamawypieki.pl"
+  },
+  "scripts": {
+    "build": "cp -r ./src/** ./dist/",
+    "deploy": "s3-deploy './dist/**' --cwd './dist/' --bucket $npm_package_config_s3bucket --etag --gzip --signatureVersion v4"
+  },
+  "devDependencies": {
+    "s3-deploy": "^0.7.3"
+  }
+}
