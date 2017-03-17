@@ -1,0 +1,18 @@
+{
+  "presets": ["env"],
+  "env": {
+    "development": {
+      "presets": [["env", {
+        "modules": false,
+        "targets": {
+          "browsers": ["Chrome 57"]
+        }
+      }]]
+    },
+    "production": {
+      "presets": [["env", {
+        "modules": false
+      }]]
+    }
+  }
+}
