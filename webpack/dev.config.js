@@ -9,7 +9,7 @@ const rootPath = path.resolve(__dirname, '../');
 
 module.exports = merge(baseConfig, {
   entry: [
-    `webpack-dev-server/client?http://localhost:8081`,
+    `webpack-dev-server/client?http://localhost:8080`,
     'webpack/hot/only-dev-server',
     './src/index.ejs',
   ],

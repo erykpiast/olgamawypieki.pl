@@ -1,3 +1,5 @@
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const imageminMozjpeg = require('imagemin-mozjpeg');
 const { DefinePlugin, optimize } = require('webpack');
 const { UglifyJsPlugin } = optimize;
 const merge = require('webpack-merge');
@@ -27,5 +29,32 @@ module.exports = merge(baseConfig, {
       sourceMap: true,
     }),
     extractCss,
+    new ImageminPlugin({
+      test: /(gif|jpg|png)$/i,
+      plugins: [imageminMozjpeg({
+        quality: 80,
+        progressive: true,
+      })],
+      gifsicle: {
+        interlaced: false,
+      },
+      jpegtran: null,
+      mozjpeg: {
+        quality: '75-90',
+      },
+      pngquant: {
+        quality: '75-90',
+        speed: 4,
+        optimizationLevel: 7,
+        progressive: true,
+      },
+      svgo: {
+        plugins: [{
+          removeViewBox: true,
+        }, {
+          removeEmptyAttrs: true,
+        }],
+      },
+    }),
   ],
 });

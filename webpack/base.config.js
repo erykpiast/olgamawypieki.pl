@@ -34,9 +34,9 @@ module.exports = {
   context: rootPath,
   entry: ['./src/index.js', './src/index.scss'],
   output: {
-    path: path.resolve(rootPath, 'dist'),
+    path: path.resolve(rootPath, './dist'),
     filename: '[hash].js',
-    publicPath: '/assets/',
+    publicPath: '/',
     sourceMapFilename: '[hash].map'
   },
   target: 'web',
@@ -68,14 +68,14 @@ module.exports = {
       ],
     }, {
       test: /\.(png|jpg|svg|ttf|otf|woff)$/,
-      use: [
-        {
-          loader: 'file-loader',
-          options: {
-            name: '[hash].[ext]',
-          },
+      use: [{
+        loader: 'file-loader',
+        options: {
+          name: '[hash].[ext]',
+          publicPath: '/images/',
+          outputPath: 'images/',
         },
-      ]
+      }]
     }],
   },
 
