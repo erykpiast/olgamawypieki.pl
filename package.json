@@ -7,7 +7,7 @@
   "author": "eryk.piast@gmail.com",
   "license": "MIT",
   "config": {
-    "title": "Olga ma wypieki",
+    "title": "Olga ma wypieki – pracownia słodkości",
     "s3bucket": "olgamawypieki.pl"
   },
   "scripts": {
