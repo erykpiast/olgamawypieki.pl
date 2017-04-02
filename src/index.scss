@@ -1,8 +1,29 @@
 body {
-    background-image: url('./images/placek_01.jpg'), url('./images/placek_02.jpg');
-
+    min-height: 100%;
+    margin: 0;
 }
 
 h1 {
-    color: green;
+    $size: 25%;
+
+    background: {
+        image: url(./images/logo.svg);
+        position: center center;
+        repeat: no-repeat;
+        size: cover;
+    };
+
+    font-family: sans-serif;
+    overflow: hidden;
+    text-align: center;
+    text-indent: -1000px;
+
+    height: .00001px;
+    left: 50%;
+    margin: 0;
+    padding-bottom: $size;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    width: $size;
 }
