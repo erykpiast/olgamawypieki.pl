@@ -11,8 +11,7 @@
     "s3bucket": "olgamawypieki.pl"
   },
   "scripts": {
-    "clean": "rm -rf dist/*",
-    "build": "cp -r ./src/** ./dist/",
+    "clean": "rm -rf ./dist",
     "build:dev": "NODE_ENV=development webpack --config webpack/dev.config.js",
     "build:prod": "NODE_ENV=production webpack --config webpack/prod.config.js",
     "develop": "webpack-dev-server --config webpack/dev.config.js",
