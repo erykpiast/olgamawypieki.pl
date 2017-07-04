@@ -2,7 +2,7 @@ const autoprefixer = require('autoprefixer');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
-const templateData = require('../src/template-data');
+const pkg = require('../package.json');
 
 const { extractCss } = require('./extract-plugins');
 
@@ -11,15 +11,14 @@ const rootPath = path.resolve(__dirname, '../');
 const cssLoaders = [{
     loader: 'css-loader',
     options: {
-      modules: true,
-      camelCase: true,
-      importLoaders: 1,
+      importLoaders: 2,
       sourceMap: true,
     },
   }, {
     loader: 'postcss-loader',
     options: {
-      plugins: () => [autoprefixer()]
+      plugins: () => [autoprefixer()],
+      sourceMap: true,
     }
   }, {
     loader: 'sass-loader',
@@ -56,7 +55,7 @@ module.exports = {
         }
       }, {
         loader: 'ejs-html-loader',
-        options: templateData,
+        options: pkg.config,
       }],
     }, {
       test: /\.scss$/,

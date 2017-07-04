@@ -8,6 +8,8 @@
   "license": "MIT",
   "config": {
     "title": "Olga ma wypieki – pracownia słodkości",
+    "facebookUrl": "https://facebook.com/olgamawypieki",
+    "instagramUrl": "https://instagram.com/olgamawypieki",
     "s3bucket": "olgamawypieki.pl"
   },
   "scripts": {

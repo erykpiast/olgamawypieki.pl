@@ -1,29 +1,88 @@
 body {
+    font-family: sans-serif;
     min-height: 100%;
     margin: 0;
 }
 
-h1 {
-    $size: 25%;
+@mixin center {
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
 
+@mixin remove-text {
+    color: transparent;
+}
+
+@mixin fill-image($url: '') {
     background: {
-        image: url(./images/logo.svg);
         position: center center;
         repeat: no-repeat;
         size: cover;
     };
 
-    font-family: sans-serif;
-    overflow: hidden;
-    text-align: center;
-    text-indent: -2000px;
+    @if $url != '' {
+        background-image: url($url);
+    }
+}
 
+@mixin square {
+    display: block;
     height: .00001px;
-    left: 50%;
+    padding-bottom: 100%;
+    width: 100%;
+}
+
+@mixin cover {
+    height: 100%;
+    width: 100%;
+}
+
+.logo {
+    @include center;
+    @include remove-text;
+
     margin: 0;
-    padding-bottom: $size;
+    max-width: 16em;
+    width: 75%;
+
+    &:before {
+        @include fill-image('./images/logo.svg');
+        @include square;
+
+        content: "";
+    }
+}
+
+.social-buttons {
+    bottom: 2em;
     position: absolute;
-    top: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    width: $size;
+    width: 100%;
+
+    text-align: center;
+
+    &__button {
+        @include remove-text;
+
+        cursor: pointer;
+        display: inline-block;
+        width: 5em;
+
+        &:before {
+            content: "";
+            @include square;
+            @include fill-image;
+        }
+
+        &--facebook:before {
+            background-image: url(./images/facebook.svg);
+            margin-right: 1.5em;
+        }
+
+        &--instagram:before {
+            background-image: url(./images/instagram.svg);
+            margin-left: 1.5em;
+        }
+    }
 }
