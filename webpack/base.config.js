@@ -85,6 +85,6 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(rootPath, './src/index.ejs'),
-    }),
+    })
   ],
 }
