@@ -3,6 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const path = require('path');
+const ResourceHintsPlugin = require('resource-hints-webpack-plugin');
+const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
+const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 const { DefinePlugin, optimize } = require('webpack');
 const { UglifyJsPlugin } = optimize;
 const merge = require('webpack-merge');
@@ -46,7 +49,14 @@ module.exports = merge(baseConfig, {
         sortClassName: true,
         useShortDoctype: true,
       },
+      preload: ['dist/images/*.svg'],
+      inlineSource: '\.css$'
     }),
+    new ResourceHintsPlugin(),
+    new ScriptExtHtmlWebpackPlugin({
+      defaultAttribute: 'async'
+    }),
+    new StyleExtHtmlWebpackPlugin(),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
