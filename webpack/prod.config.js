@@ -1,4 +1,5 @@
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
 const imageminMozjpeg = require('imagemin-mozjpeg');
 const path = require('path');
@@ -10,6 +11,8 @@ const pkg = require('../package.json');
 
 const baseConfig = require('./base.config');
 const { extractCss } = require('./extract-plugins');
+
+const rootPath = path.resolve(__dirname, '../');
 
 module.exports = merge(baseConfig, {
   devtool: 'source-map',
@@ -24,6 +27,26 @@ module.exports = merge(baseConfig, {
   },
 
   plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(rootPath, './src/index.ejs'),
+      minify: {
+        collapseWhitespace: true,
+        conservativeCollapse: false,
+        collapseBooleanAttributes: true,
+        minifyCSS: true,
+        minifyJS: true,
+        preserveLineBreaks: false,
+        removeAttributeQuotes: true,
+        removeComments: true,
+        removeEmptyAttributes: true,
+        removeRedundantAttributes: true,
+        removeScriptTypeAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        sortAttributes: true,
+        sortClassName: true,
+        useShortDoctype: true,
+      },
+    }),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),

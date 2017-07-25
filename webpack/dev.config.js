@@ -1,4 +1,5 @@
 const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { DefinePlugin, HotModuleReplacementPlugin, NamedModulesPlugin } = require('webpack');
 const merge = require('webpack-merge');
 
@@ -23,6 +24,9 @@ module.exports = merge(baseConfig, {
     noInfo: true,
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(rootPath, './src/index.ejs'),
+    }),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),

@@ -1,11 +1,11 @@
 const autoprefixer = require('autoprefixer');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 const pkg = require('../package.json');
 
 const { extractCss } = require('./extract-plugins');
 
+const PROD = process.env.NODE_ENV === 'production';
 
 const rootPath = path.resolve(__dirname, '../');
 const cssLoaders = [{
@@ -81,10 +81,4 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json', '.css'],
   },
-
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: path.resolve(rootPath, './src/index.ejs'),
-    })
-  ],
 }
