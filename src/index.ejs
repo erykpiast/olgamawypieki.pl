@@ -1,52 +1,124 @@
 <!DOCTYPE html>
 <html lang="pl">
-    <head>
-        <title><%= title %></title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Wypieki tworzone z pasją specjalnie dla Ciebie. Najwyższa jakość składników, najlepszy smak. Darmowa dostawa w Poznaniu.">
-        <meta name="keywords" content="domowe ciasta,wypieki,placki,torty,ciasteczka,na zamówienie,cukiernia,Poznań,najlepsze ciasta,najlepsze wypieki">
-        <meta name="google-site-verification" content="7sbpzXF8QFitiCsLI-AzQEJz4oHaeqFLGOKYrgzEamk" />
-    </head>
-    <body>
-        <h1 class="logo"><%= title %></h1>
-        <section class="social-buttons">
-            <a
-                class="social-buttons__button social-buttons__button--facebook"
-                href="<%= facebookUrl %>"
-                target="_blank"
-            >Facebook</a>
-            <a
-                class="social-buttons__button social-buttons__button--instagram"
-                href="<%= instagramUrl %>"
-                target="_blank"
-            >Instagram</a>
-        </section>
-        <!-- Facebook Pixel Code -->
-        <script>
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window,document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '894249307383591');
-            fbq('track', 'PageView');
-        </script>
-        <noscript>
-            <img height="1" width="1"  src="https://www.facebook.com/tr?id=894249307383591&ev=PageView&noscript=1"/>
-        </noscript>
-        <!-- End Facebook Pixel Code -->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-            ga('create', 'UA-96650299-1', 'auto');
-            ga('send', 'pageview');
-        </script>
-    </body>
+<head>
+    <title>
+        <%= title %>
+    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Wypieki tworzone z pasją specjalnie dla Ciebie. Najwyższa jakość składników, najlepszy smak.">
+    <meta name="keywords" content="domowe ciasta,wypieki,placki,torty,ciasteczka,na zamówienie,cukiernia,Poznań,najlepsze ciasta,najlepsze wypieki">
+    <meta name="google-site-verification" content="7sbpzXF8QFitiCsLI-AzQEJz4oHaeqFLGOKYrgzEamk" />
+</head>
+
+<body>
+    <h1 class="logo">
+        <%= name %>
+    </h1>
+    <section class="social-buttons">
+        <a class="social-buttons__button social-buttons__button--facebook" href="<%= facebookUrl %>" target="_blank">Facebook</a>
+        <a class="social-buttons__button social-buttons__button--instagram" href="<%= instagramUrl %>" target="_blank">Instagram</a>
+    </section>
+    <!-- Facebook Pixel Code -->
+    <script>
+        ! function (f, b, e, v, n, t, s) {
+            if (f.fbq) return;
+            n = f.fbq = function () {
+                n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+            };
+            if (!f._fbq) f._fbq = n;
+            n.push = n;
+            n.loaded = !0;
+            n.version = '2.0';
+            n.queue = [];
+            t = b.createElement(e);
+            t.async = !0;
+            t.src = v;
+            s = b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t, s)
+        }(window, document, 'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '894249307383591');
+        fbq('track', 'PageView');
+
+    </script>
+    <noscript>
+        <img height="1" width="1" src="https://www.facebook.com/tr?id=894249307383591&ev=PageView&noscript=1" />
+    </noscript>
+    <!-- End Facebook Pixel Code -->
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-96650299-1', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+    <script type="application/ld+json">
+        {
+            "@context":"http://schema.org",
+            "@type": "Bakery",
+            "logo": "https://olgamawypieki.pl/images/logo.svg",
+            "image": "https://olgamawypieki.pl/images/logo.svg",
+            "url": "https://olgamawypieki.pl",
+            "name": "Pracownia cukiernicza Olga ma Wypieki – Olga Krysztofiak, Eryk Napierała s.c.",
+            "description": "Wypieki tworzone z pasją specjalnie dla Ciebie. Najwyższa jakość składników, najlepszy smak. Tu powstaje wszystko, co dobre.",
+            "priceRange": "$$",
+            "servesCuisine": "Fusion",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+48-600-475-167",
+                "contactType": "Customer service"
+            },
+            "geo": {
+                "@type":"GeoCoordinates",
+                "latitude": "52.394707",
+                "longitude": "16.922752"
+            },
+            "telephone": "+48-600-475-167",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "ul. Górna Wilda 96/1",
+                "addressLocality": "Poznań",
+                "addressRegion": "wielkopolskie",
+                "postalCode": "61-576",
+                "addressCountry": "PL"
+            },
+            "openingHoursSpecification": [
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday"
+                    ],
+                    "opens": "09:00",
+                    "closes": "18:00"
+                },
+                {
+                    "@type": "OpeningHoursSpecification",
+                    "dayOfWeek": [
+                        "Saturday"
+                    ],
+                    "opens": "10:00",
+                    "closes": "16:00"
+                }
+            ]
+        }
+    </script>
+</body>
+
 </html>

@@ -66,12 +66,21 @@ module.exports = {
         ...cssLoaders,
       ],
     }, {
-      test: /\.(png|jpg|svg|ttf|otf|woff)$/,
+      test: /\.(png|jpg|ttf|otf|woff)$/,
+      use: [{
+        loader: 'url-loader',
+        options: {
+          limit: 10 * 1024,
+          name: '[hash].[ext]',
+          outputPath: 'images/',
+        },
+      }]
+    }, {
+      test: /\.svg$/,
       use: [{
         loader: 'file-loader',
         options: {
           name: '[hash].[ext]',
-          publicPath: '/images/',
           outputPath: 'images/',
         },
       }]
