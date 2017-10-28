@@ -2,6 +2,7 @@ const autoprefixer = require('autoprefixer');
 const path = require('path');
 
 const pkg = require('../package.json');
+const schema = require('../src/schema.json');
 
 const { extractCss } = require('./extract-plugins');
 
@@ -55,7 +56,7 @@ module.exports = {
         }
       }, {
         loader: 'ejs-html-loader',
-        options: pkg.config,
+        options: Object.assign({}, pkg.config, { schema: JSON.stringify(schema) }),
       }],
     }, {
       test: /\.scss$/,

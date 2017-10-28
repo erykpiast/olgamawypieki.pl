@@ -1,0 +1,52 @@
+{
+  "@context":"http://schema.org",
+  "@type": "Bakery",
+  "logo": "https://olgamawypieki.pl/images/logo.svg",
+  "image": "https://olgamawypieki.pl/images/logo.svg",
+  "url": "https://olgamawypieki.pl",
+  "name": "Pracownia cukiernicza Olga ma Wypieki – Olga Krysztofiak, Eryk Napierała s.c.",
+  "description": "Wypieki tworzone z pasją specjalnie dla Ciebie. Najwyższa jakość składników, najlepszy smak. Tu powstaje wszystko, co dobre.",
+  "priceRange": "$$",
+  "servesCuisine": "Fusion",
+  "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+48-600-475-167",
+      "contactType": "Customer service"
+  },
+  "geo": {
+      "@type":"GeoCoordinates",
+      "latitude": "52.394707",
+      "longitude": "16.922752"
+  },
+  "telephone": "+48-600-475-167",
+  "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ul. Górna Wilda 96/1",
+      "addressLocality": "Poznań",
+      "addressRegion": "wielkopolskie",
+      "postalCode": "61-576",
+      "addressCountry": "PL"
+  },
+  "openingHoursSpecification": [
+      {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+              "Monday",
+              "Tuesday",
+              "Wednesday",
+              "Thursday",
+              "Friday"
+          ],
+          "opens": "09:00",
+          "closes": "18:00"
+      },
+      {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+              "Saturday"
+          ],
+          "opens": "10:00",
+          "closes": "16:00"
+      }
+  ]
+}
