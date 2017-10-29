@@ -79,13 +79,17 @@ body {
             content: "";
             @include square;
             @include fill-image;
+            border-radius: 100%;
         }
 
         &--facebook {
             margin-right: .75em;
 
             &:before {
-                background-image: url(./images/facebook.svg);
+                background: {
+                    color: #3c5a9a;
+                    image: url(./images/facebook.svg);
+                };
             }
         }
 
@@ -93,7 +97,10 @@ body {
             margin-left: .75em;
 
             &:before {
-                background-image: url(./images/instagram.svg);
+                background: {
+                    color: #e1306c;
+                    image: url(./images/instagram.svg);
+                };
             }
         }
     }
