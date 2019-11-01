@@ -54,7 +54,7 @@ body {
     width: 75%;
 
     &:before {
-        @include fill-image('./images/logo.svg', './images/logo.min.png');
+        @include fill-image('./images/logo.svg', './images/logo.png');
         @include square;
 
         content: "";

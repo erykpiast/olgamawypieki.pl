@@ -1,19 +1,19 @@
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ImageminPlugin = require('imagemin-webpack-plugin').default;
-const imageminMozjpeg = require('imagemin-mozjpeg');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const path = require('path');
 const ResourceHintsPlugin = require('resource-hints-webpack-plugin');
-const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
-const StyleExtHtmlWebpackPlugin = require('style-ext-html-webpack-plugin');
 const { DefinePlugin, optimize } = require('webpack');
-const { UglifyJsPlugin } = optimize;
+const TerserWebpackPlugin = require('terser-webpack-plugin');
 const merge = require('webpack-merge');
+const HtmlWebpackInlineSourcePlugin = require('html-webpack-inline-source-plugin');
+const HtmlWebpackExcludeAssetsPlugin = require('html-webpack-exclude-assets-plugin');
 
 const pkg = require('../package.json');
 
 const baseConfig = require('./base.config');
-const { extractCss } = require('./extract-plugins');
+const extractCss = require('./extract-plugins');
 
 const rootPath = path.resolve(__dirname, '../');
 
@@ -49,41 +49,27 @@ module.exports = merge(baseConfig, {
         sortClassName: true,
         useShortDoctype: true,
       },
-      preload: ['dist/images/*.svg'],
-      inlineSource: '\.css$'
+      preload: ['*.svg'],
+      inlineSource: '.css$',
+      excludeAssets: [/\.js$/],
     }),
+    new HtmlWebpackInlineSourcePlugin(),
+    new HtmlWebpackExcludeAssetsPlugin(),
     new ResourceHintsPlugin(),
-    new ScriptExtHtmlWebpackPlugin({
-      defaultAttribute: 'async'
-    }),
-    new StyleExtHtmlWebpackPlugin(),
     new DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production'),
     }),
-    new UglifyJsPlugin({
-      sourceMap: true,
-    }),
-    extractCss,
+    extractCss.plugin,
     new ImageminPlugin({
-      test: /(gif|jpg|png)$/i,
-      plugins: [imageminMozjpeg({
-        quality: 80,
-        progressive: true,
-      })],
-      gifsicle: {
-        interlaced: false,
-      },
-      jpegtran: null,
-      mozjpeg: {
-        quality: '75-90',
-      },
+      test: /(jpg|svg)$/i,
       pngquant: {
-        quality: '75-90',
+        quality: '10-30',
         speed: 4,
         optimizationLevel: 7,
         progressive: true,
       },
       svgo: {
+        floatPrecision: 1,
         plugins: [{
           removeViewBox: true,
         }, {
@@ -93,24 +79,34 @@ module.exports = merge(baseConfig, {
     }),
     new FaviconsWebpackPlugin({
       logo: path.resolve(baseConfig.context, 'src/images/logo.svg'),
-      prefix: 'images/favico-[hash]/',
-      emitStats: true,
-      persistentCache: true,
+      prefix: 'images/favico-[hash:6]/',
+      cache: true,
       inject: true,
-      background: '#fff',
-      title: pkg.config.title,
-      icons: {
-        android: true,
-        appleIcon: true,
-        appleStartup: true,
-        coast: false,
-        favicons: true,
-        firefox: true,
-        opengraph: false,
-        twitter: true,
-        yandex: false,
-        windows: false
+      favicons: {
+        title: pkg.config.title,
+        background: '#fff',
+        icons: {
+          android: false,
+          appleIcon: false,
+          appleStartup: false,
+          coast: false,
+          favicons: true,
+          firefox: false,
+          opengraph: false,
+          twitter: false,
+          yandex: false,
+          windows: false
+        }
       }
     })
   ],
+
+  optimization: {
+    minimizer: [
+      new TerserWebpackPlugin({
+        sourceMap: true,
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
+  }
 });
