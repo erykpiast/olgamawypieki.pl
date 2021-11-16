@@ -28,7 +28,7 @@
   ],
   "devDependencies": {
     "autoprefixer": "9.7.0",
-    "aws-sdk": "2.561.0",
+    "aws-sdk": "2.814.0",
     "babel-core": "6.26.3",
     "babel-loader": "8.0.6",
     "babel-preset-env": "1.7.0",
