@@ -50,7 +50,7 @@
     "imagemin-webpack-plugin": "2.4.2",
     "mini-css-extract-plugin": "0.8.0",
     "mustache": "3.1.0",
-    "node-sass": "4.13.0",
+    "node-sass": "7.0.0",
     "optimize-css-assets-webpack-plugin": "5.0.3",
     "postcss-loader": "3.0.0",
     "resource-hints-webpack-plugin": "0.0.2",
